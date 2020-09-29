@@ -1,0 +1,6 @@
+#Playbook zur Basiskonfiguration
+- hosts: all
+  roles:
+   - role: basics
+   - role: vim
+   - role: docker-ce

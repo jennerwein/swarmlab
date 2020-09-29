@@ -1,0 +1,6 @@
+---
+# vars file for vim
+
+vim_home_dirs:
+- { user: root, dir: '/root/' }
+- { user: vagrant, dir: '/home/vagrant/' }

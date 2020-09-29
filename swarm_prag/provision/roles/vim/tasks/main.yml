@@ -1,0 +1,32 @@
+---
+# tasks file for vim
+
+- name: vim installieren
+  apt: name=vim state=present
+
+- name: "Verzeichnisse für colorschemes erstellen"
+  become: yes
+  file: 
+    path: "{{ item.dir }}.vim/colors" 
+    state: directory
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+  with_items: "{{ vim_home_dirs }}"
+
+- name: "colorscheme badwolf.vim einbringen"
+  become: yes
+  copy:
+    src: badwolf.vim
+    dest: "{{ item.dir }}.vim/colors/badwolf.vim"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+  with_items: "{{ vim_home_dirs }}"
+
+- name: "Datei .vimrc bereitstellen"
+  become: yes
+  copy:
+    src: .vimrc
+    dest: "{{ item.dir }}.vimrc"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+  with_items: "{{ vim_home_dirs }}"

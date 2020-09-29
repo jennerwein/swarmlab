@@ -1,0 +1,25 @@
+---
+- name: apt | Update
+  become: yes
+  apt: 
+    update_cache: yes
+  changed_when: False # Overriding The Changed Result: never report 'changed' status
+
+- name: command | List packages to upgrade (1/2)
+  command: apt list --upgradable
+  register: updates
+  changed_when: False # Overriding The Changed Result: never report 'changed' status
+
+- name: debug | List packages to upgrade (2/2)
+  debug: 
+    msg: "{{ (updates.stdout_lines | count)-1 }} packages to upgrade."
+
+- name: apt | Upgrade
+  become: yes
+  apt: 
+    upgrade: save
+
+- name: apt | Autoremove
+  become: yes
+  apt: 
+    autoremove: yes

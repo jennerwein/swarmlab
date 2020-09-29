@@ -1,0 +1,15 @@
+#Playbook Swarm Init
+- hosts: all
+  become: true
+  tasks:
+  - name: command | swarm init
+  #   command: "docker swarm init --listen-addr 172.16.0.101:2377 --advertise-addr enp0s8"
+    command: "docker swarm init --advertise-addr 172.16.0.101"
+    ignore_errors: yes
+
+  - name: shell | join-token for manager
+    # Aus dem Output mit sed das join-Kommando extrahieren und in Datei schreiben
+    # Die Datei liegt dann im Verzeichnis vagrant/provision/
+    # Hier shell statt command, da bash-Funktionalitäten genutzt werden.
+    shell: "docker swarm join-token manager | sed -n '3p' > .join-manager-cmd.txt"
+

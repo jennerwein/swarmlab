@@ -1,0 +1,6 @@
+#Playbook zur Basiskonfiguration
+- hosts: all
+  roles:
+   - role: conn-check
+   - role: basics
+   - role: vim

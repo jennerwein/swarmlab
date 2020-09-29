@@ -1,0 +1,9 @@
+---
+# tasks file for conn-check
+
+- local_action: command whoami
+  register: user_name
+  changed_when: False
+
+- debug:
+    msg: 'Ansible Provising as User: {{user_name.stdout}}'

@@ -1,0 +1,29 @@
+---
+# tasks file for basics
+
+- name: apt | Basispakete installieren
+  become: yes
+  apt: 
+    name: [aptitude, htop, bridge-utils]
+    state: latest
+
+- name: lineinfile | Farbe des root-Prompts auf rot ändern
+  become: yes
+  lineinfile:
+    regexp: '^PS1='
+    path: /root/.bashrc
+    line: 'PS1="\[\033[1;31m\]\u@\h\[\\033[0m\] \[\033[1;34m\]\w\[\033[0m\] >" ###ansible###' 
+
+- name: lineinfile | Farbe des vagrant-Prompts auf grün ändern
+  lineinfile:
+    regexp: '^PS1='
+    path: /home/vagrant/.bashrc
+    line: 'PS1="\[\033[1;32m\]\u@\h\[\\033[0m\] \[\033[1;34m\]\w\[\033[0m\] >" ###ansible####'
+
+- name: lineinfile | SSH härten
+  become: yes
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'PasswordAuthentication no  ###ansible####'
+    insertafter: '#PasswordAuthentication yes' 
+
