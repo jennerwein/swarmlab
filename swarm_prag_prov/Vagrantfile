@@ -6,62 +6,52 @@ configFile='./config.yml'
 require 'yaml'
 getVar = YAML.load_file(configFile) 
 
-
 BOX_IMAGE         = getVar['BOX_IMAGE']
 NUMBER_OF_MANGERS = getVar['NUMBER_OF_MANGERS']
 
+####################################################################################
+####################################################################################
+
 Vagrant.configure("2") do |config|
 
-  #########################################################################
-  # Zuerst wird manager1 konfiguriert.
-  # Er initiert den Swarm und stellt das Join-Token zur Verfügung
-  #########################################################################
-  config.vm.define "manager1" do |subconfig|
-    subconfig.vm.box = BOX_IMAGE
-    subconfig.vm.hostname = "manager1"
-    subconfig.vm.provider "virtualbox" do |vm|
-      vm.memory = 768
-      vm.cpus = 4
-    end
-    subconfig.vm.network "private_network", ip: "172.16.0.101"
-    # Swarm initialisieren das Loin Kommando für die anderen manager 
-    # im file .join-manager-cmd.txt bereitstellen.
-    subconfig.vm.provision "ansible_local" do |ansible|
-      
-      # Swarm initialisieren und 
-      ansible.playbook = "provision/swarm_init.yaml"    
-    end
-    # Script um Dockercontainer auf manager 1 zu starten
-    subconfig.vm.provision "shell", path: "provision/start-services.sh"
+  # Configure the hardware and the OS of the VMs.  
+  config.vm.provider "virtualbox" do |vm|
+    vm.memory = 768
+    vm.cpus = 4
+  end
+  config.vm.box = BOX_IMAGE
+
+  # Sync host folder with a folder within the VMs.
+  config.vm.synced_folder "provision", "/home/vagrant/provision"
+  # Basic configuration of Linux + Docker
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "provision/basic-config.yaml"    
+    # Use python 3
+    ansible.extra_vars = { ansible_python_interpreter: "/usr/bin/python3" }
   end
 
+  # First config a VM as swarm manager1 
+  config.vm.define "manager1" do |subconfig|
+    subconfig.vm.hostname = "manager1"
+    subconfig.vm.network "private_network", ip: "172.16.0.101"
+    # Initialize swarm mode and store the join token 
+    # in the file .join-manager-cmd.txt
+    subconfig.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "provision/swarm_init.yaml"    
+    end
+    # Install serveral services on manager1
+    subconfig.vm.provision "shell", path: "provision/services/portainer/start-portainer.sh"
+    subconfig.vm.provision "shell", path: "provision/services/visualizer/start-visualizer.sh"
+  end
+
+  # Configure manager 1..n and join the swarm
   (2..NUMBER_OF_MANGERS).each do |i|
     config.vm.define "manager#{i}" do |subconfig|
-      subconfig.vm.box = BOX_IMAGE
       subconfig.vm.hostname = "manager#{i}"
-      subconfig.vm.provider "virtualbox" do |vm|
-        vm.memory = 512
-        vm.cpus = 2
-      end
-      subconfig.vm.network "private_network", ip: "172.16.0.#{100+i}/24"
-      # Dem Schwarm beitreten
+      subconfig.vm.network "private_network", ip: "172.16.0.#{100+i}"
+      # Join the swarm
       subconfig.vm.provision "shell", path: "provision/swarm_join.sh"
     end
-  end
-  
-  #######################################################################
-  # Die folgenden Provisierungen werden für ALLE Maschinen durchgeführt.  
-  #######################################################################
-  # Da alles nur lokal läuft, wird der unsichere Schlüssel verwendet
-  config.ssh.insert_key = false
-  # Wichtige Folder in das Homeverzeichnis der sharen.
-  config.vm.synced_folder "provision", "/home/vagrant/provision"
-  config.vm.synced_folder "services", "/home/vagrant/services"
-  # Basiskonfiguration mit Unix + Docker
-  config.vm.provision "ansible_local" do |ansible|
-    ansible.compatibility_mode = "2.0"
-    ansible.extra_vars = { ansible_python_interpreter: "/usr/bin/python3" }
-    ansible.playbook = "provision/basic-config.yaml"    
   end
 
 end
