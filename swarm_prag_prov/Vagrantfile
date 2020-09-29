@@ -1,8 +1,14 @@
 #!/usr/bin/env ruby
-# Test Vagrant
+
+# We use a config file for user parameters.
+configFile='./config.yml'
+# In Ruby we need a YAML module to serialize the yaml string
+require 'yaml'
+getVar = YAML.load_file(configFile) 
+
 
 BOX_IMAGE = "ubuntu/xenial64"
-NUMBER_OF_NODES = 3
+NUMBER_OF_NODES = getVar['NUMBER_OF_NODES']
 
 Vagrant.configure("2") do |config|
 

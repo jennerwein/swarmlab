@@ -1,0 +1,5 @@
+# User parameters to configure the sarm environment.
+# The parameters are used by the vagrantfile.
+
+# Number of swarm managers
+NUMBER_OF_NODES: 3
