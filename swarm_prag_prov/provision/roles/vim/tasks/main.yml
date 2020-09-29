@@ -2,7 +2,10 @@
 # tasks file for vim
 
 - name: vim installieren
-  apt: name=vim state=present
+  become: yes
+  apt:
+    name: vim 
+    state: present
 
 - name: "Verzeichnisse für colorschemes erstellen"
   become: yes

@@ -1,5 +1,10 @@
 # User parameters to configure the sarm environment.
 # The parameters are used by the vagrantfile.
 
+# Das
+# BOX_IMAGE: "ubuntu/focal64"     # Absturz
+# BOX_IMAGE: "bento/ubuntu-20.04" # ppa ansible fehlt
+BOX_IMAGE: "ubuntu/bionic64"
+
 # Number of swarm managers
-NUMBER_OF_NODES: 3
+NUMBER_OF_MANGERS: 1
