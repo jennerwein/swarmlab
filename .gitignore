@@ -1,0 +1,39 @@
+!.gitignore
+.vagrant/
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ignore private/secret files
+*.der
+*.key
+*.pem
+
+# ignore Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore Logs and databases #
+*.log
+*.sql
+*.sqlite
+
+# ignore OS generated files #
+ehthumbs.db
+Thumbs.db
+*.bak
+*.swp
+__py*
+_obj
+_test
