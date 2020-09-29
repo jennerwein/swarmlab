@@ -13,4 +13,4 @@ Installation tested on 28.09.20 with a fresh W10.
 
 ## Testing the Installation on W10/Ubuntu
 
-* Open `http://172.16.0.101:9000` in a browser. Then you can check the swarm by the management tool portainer.
+* Open [http://172.16.0.101:9000](http://172.16.0.101:9000) in a browser. Then you can check the swarm by the management tool portainer.
