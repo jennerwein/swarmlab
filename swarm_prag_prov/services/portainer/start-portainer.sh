@@ -1,14 +1,7 @@
 #!/bin/sh
 
 cd /home/vagrant/services/portainer
-docker stack deploy --compose-file=portainer-agent-stack.yml portainer
 
-# Start von Portainer mit run
-# docker run	\
-#    -d=true  \
-#    -p 9000:9000 \
-#    -v /var/run/docker.sock:/var/run/docker.sock \
-#    -v /opt/portainer:/data \
-#    --name Portainer \
-#    --restart=always \
-#    portainer/portainer:latest
+# Install Portainer https://www.portainer.io/installation/ 
+curl -L https://downloads.portainer.io/portainer-agent-stack.yml -o portainer-agent-stack.yml
+docker stack deploy --compose-file=portainer-agent-stack.yml portainer
