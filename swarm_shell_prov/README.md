@@ -69,7 +69,7 @@ If the versions of installed softwares are showed, your are ready to build the s
 
 Element | Content
 ---------------- | -------------
-provision | The scripts used to provision the machines
+provision | Provisioning scripts
 config.yml | Contain the default configurations of the Lab, to change the default configuration, please read the **Lab configurations** part or the comments in the config file
 Vagrantfile | File used to build the needed virtual machines
 
@@ -77,7 +77,7 @@ Vagrantfile | File used to build the needed virtual machines
 
 Configuration | Meaning | Default value
 ---------------- | ------------- | ----------------
-VM_BOX | The Boxe installed on the build VMs | ubuntu/bionic64 (last version of ubuntu bionic) [https://app.vagrantup.com/ubuntu/boxes/bionic64]
+VM_BOX | Boxe to be installed | ubuntu/bionic64 (last version of ubuntu bionic) [https://app.vagrantup.com/ubuntu/boxes/bionic64]
 UPDATE_MACHINES | Enable updates | true
 NUMBER_OF_MANAGERS | Desired number of managers | 1
 NUMBER_OF_WORKERS| Desired number of workers | 1
@@ -90,11 +90,11 @@ VAGRANTFILE_API_VERSION | Vagrant version | 2
 # Troubleshooting:
 
 - Permission denied:
-That mean that you need to execute the command with administrator account, please use **sudo** in Ubuntu. In Windows try to open the command line **as administrator**
+This means that you have to run the command with an administrator account. Please use **sudo** in Ubuntu. On Windows, try opening the command line **as an administrator**
 
 - Make sur that Hyper-V in Windows is not enabled:
 Installing VirtualBox on Windwos with enabled Hyper-V can cause Problems, for more information please visit this [link](https://www.vagrantup.com/docs/installation)
-To disabled Hyper-V in Windows 10, please execute the folowing command:
+Run please the following command to disable Hyper-V in Windows 10:
 
 ``` Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All ```
 
