@@ -1,0 +1,4 @@
+---
+
+- name: 'Install docker'
+  command: 'bash -c "curl -fsSL https://get.docker.com/ | sh"'

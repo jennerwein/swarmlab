@@ -1,0 +1,116 @@
+---
+
+- name: docker_swarm | Ensuring Docker Engine Is Running
+  service:
+    name: "docker"
+    state: "started"
+
+- name: docker_swarm | Checking Swarm Mode Status
+  command: "docker info"
+  register: "docker_info"
+  changed_when: false
+
+- name: docker_swarm | Init Docker Swarm Mode On First Manager
+  command: >
+          docker swarm init
+          --listen-addr {{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(MANAGER_WORKER_IPV4) | first }}:2377
+          --advertise-addr {{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(MANAGER_WORKER_IPV4) | first }}
+  when: >
+        'Swarm: inactive' in docker_info.stdout and
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Capturing Docker Swarm Worker join-token
+  command: "docker swarm join-token -q worker"
+  changed_when: false
+  register: "docker_swarm_worker_token"
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Capturing Docker Swarm Manager join-token
+  command: "docker swarm join-token -q manager"
+  changed_when: false
+  register: "docker_swarm_manager_token"
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Delete manager directory
+  file:
+    path: /vagrant_data/tokens/manager-token
+    state: absent
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Delete worker directory
+  file:
+    path: /vagrant_data/tokens/worker-token
+    state: absent
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Delete ip address manager file
+  file:
+    path: /vagrant_data/tokens/manager-address-token
+    state: absent
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Register the swarm worker token
+  lineinfile:
+    path: /vagrant_data/tokens/worker-token
+    line: "{{ docker_swarm_worker_token.stdout }}"
+    create: yes
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Register the swarm manager token
+  lineinfile:
+    path: /vagrant_data/tokens/manager-token
+    line: "{{ docker_swarm_manager_token.stdout }}"
+    create: yes
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Register the manager ip address
+  lineinfile:
+    path: /vagrant_data/tokens/manager-address-token
+    line: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(MANAGER_WORKER_IPV4) | first }}:2377"
+    create: yes
+  when: >
+        inventory_hostname == "manager1"
+
+- name: docker_swarm | Defining Docker Swarm Manager Address
+  set_fact:
+    docker_swarm_manager_address: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(MANAGER_WORKER_IPV4) | first }}:2377"
+
+- name: docker_swarm | Defining Manager Token Fact
+  set_fact:
+    manager_token: "{{ lookup('file', 'tokens/manager-token') }}"
+
+- name: docker_swarm | Defining Worker Token Fact
+  set_fact:
+    worker_token: "{{ lookup('file', 'tokens/worker-token') }}"
+
+- name: docker_swarm | Defining Manager address Fact
+  set_fact:
+    manager_address: "{{ lookup('file', 'tokens/manager-address-token') }}"
+
+- name: docker_swarm | Joining Additional Managers To Cluster
+  command: >
+          docker swarm join
+          --token {{ hostvars[inventory_hostname]['manager_token']}}
+          {{ hostvars[inventory_hostname]['manager_address'] }}
+  when: >
+        inventory_hostname != "manager1" and
+        "manager" in inventory_hostname and
+        'Swarm: active' not in docker_info.stdout and
+        'Swarm: pending' not in docker_info.stdout
+
+- name: docker_swarm | Joining Docker Swarm Workers To Cluster
+  command: >
+          docker swarm join
+          --token {{ hostvars[inventory_hostname]['worker_token']}}
+          {{ hostvars[inventory_hostname]['manager_address'] }}
+  when: >
+        "worker" in inventory_hostname and
+        'Swarm: active' not in docker_info.stdout and
+        'Swarm: pending' not in docker_info.stdout
