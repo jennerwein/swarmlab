@@ -74,13 +74,13 @@ Element | Content
 ---------------- | -------------
 provision | The main used playbook and all roles (docker, docker-swarm, general, portainer, visualizer)
 config.yml | The default configuration of the Lab, to change the default configuration, please read the **Lab configuration** part or the comments in config file
-Vagrantfile | FIle used to build the virtual machines of the Lab
+Vagrantfile | File used to build the virtual machines (managers and workers) of the Lab
 
 ## Lab configuration
 
 Configuration | Meaning | Default value
 ---------------- | ------------- | ----------------
-VM_BOX | The Boxe installed on the build VMs | ubuntu/bionic64 (last version of ubuntu bionic) [https://app.vagrantup.com/ubuntu/boxes/bionic64]
+VM_BOX | Boxe to be installed | ubuntu/bionic64 (last version of ubuntu bionic) [https://app.vagrantup.com/ubuntu/boxes/bionic64]
 NUMBER_OF_MANAGERS | Desired number of managers | 1
 NUMBER_OF_WORKERS| Desired number of workers | 1
 MEMORY_MANAGER | Memory used for a manager | 768 (please consider the memory of your computer by changing this value)
@@ -92,15 +92,13 @@ MANAGER_WORKER_IPV4 | IP-Address of the lab (workers and managers) | 192.168.60.
 # Troubleshooting:
 
 - Permission denied:
-That mean that you need to execute the command with administrator account, please use **sudo** in Ubuntu. In Windows try to open the command line **as administrator**
+This means that you have to run the command with an administrator account. Please use **sudo** in Ubuntu. On Windows, try opening the command line **as an administrator**
 
 - Make sur that Hyper-V in Windows is not enabled:
-Installing VirtualBox on Windwos with enabled Hyper-V can cause Problems, for more information please visit this [link](https://www.vagrantup.com/docs/installation)
-To disabled Hyper-V in Windows 10, please execute the folowing command:
+Installing VirtualBox on Windwos with enabled Hyper-V can cause Problems, for more information please visit this [link](https://www.vagrantup.com/docs/installation).
+Run please the following command to disable Hyper-V in Windows 10:
 
 ``` Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All ```
-
-- You will need to install the **curl** bi
 
 # Documentation
 
