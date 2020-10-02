@@ -84,7 +84,6 @@ MEMORY_WORKER | Memory used for a worker | 512 (please consider the memory of yo
 NUMBER_CPUS_MANAGER | Number of CPUs used for a manager | 2
 NUMBER_CPUS_WORKER | Number of CPUs used for a worker | 2
 MANAGER_WORKER_IPV4 | IP-Address of the lab (workers and managers) | 192.168.60.0/24 (please by changing this value, make sur that you give a valid IP-Address)
-Vagrantfile | File used to build the virtual machines of the Lab
 
 # Troubleshooting:
 
