@@ -1,0 +1,4 @@
+# ++++++++++++++++++      Please do not change thoses variables unless you know what you are doing  ++++++++++++++++++
+docker_swarm_addr: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(MANAGER_WORKER_IPV4) | first}}"
+docker_swarm_primary_manager: "manager1"
+docker_swarm_port: "2377"

@@ -1,0 +1,21 @@
+##     +++++      The default configuration for the created managers and workers     ++++++++    
+## Used Vagrant Box
+VM_BOX: "ubuntu/bionic64"
+## Enable updates 
+UPDATE_MACHINES: true
+## Number of managers
+NUMBER_OF_MANAGERS: 1
+## Number of workers
+NUMBER_OF_WORKERS: 1
+## The memory used for a manager, please check the memory of your computer before 
+## changing this value
+MEMORY_MANAGER: 768
+## The memory used for a worker, please check the memory of your computer before 
+## changing this value
+MEMORY_WORKER: 512
+## Number of CPUs for managers
+NUMBER_CPUS_MANAGER: 2
+## Number of CPUs for workers
+NUMBER_CPUS_WORKER: 2
+## Version of vagrant (default version is 2)
+VAGRANTFILE_API_VERSION: 2

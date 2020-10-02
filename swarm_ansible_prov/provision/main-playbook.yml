@@ -1,0 +1,15 @@
+---
+
+- name: Bau eines virtuellen Labors mit Docker-Swarm
+  hosts: all
+  become: true
+  gather_facts: yes
+  vars_files:
+    - ../config.yml
+    - variables.yml
+  roles:
+    - general
+    - docker
+    - docker-swarm
+    - visualizer
+    - portainer

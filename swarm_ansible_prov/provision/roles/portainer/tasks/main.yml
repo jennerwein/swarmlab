@@ -1,0 +1,12 @@
+---
+  
+- name: Check if the visualization container is running
+  command: docker ps
+  register: docker_ps
+  changed_when: false
+
+- name: Start visualization container
+  command: docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+  when: >
+        docker_ps.stdout.find('portainer/portainer') == -1 and 
+        inventory_hostname == "manager1"
