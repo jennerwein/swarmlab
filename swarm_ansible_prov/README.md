@@ -28,7 +28,7 @@ Tool | Version
 Vagrant | 2.2.6
 VirtualBox | 5.2
 
-If the versions of installed softwares are showed, your are ready to build the swarm environement (on Ubuntu). You need just to go to file where your Vagrantfile is and run:
+If the versions of installed softwares are showed, your are ready to build the swarm environement (on Ubuntu). You need just to go to the folder where your Vagrantfile is and run:
 
 ``` vagrant up ```
 
@@ -60,6 +60,10 @@ Tool | Version
 ---------------- | -------------
 Vagrant | 2.2.10
 VirtualBox | 6.1
+
+If the versions of installed softwares are showed, your are ready to build the swarm environement (on Windows). You need just to go to the folder where your Vagrantfile is and run:
+
+``` vagrant up ```
 
 ## Testing the Installation on Windows10/Ubuntu
 Please open the installed tool **Visualizer** in a Browser of your choice: [http://192.168.60.100:8080](http://172.16.0.101:8080)
