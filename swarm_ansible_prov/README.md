@@ -18,8 +18,13 @@
 
 To verify that the installation was successful, check the version of each software:
 
-Vagrant: ``` vagrant --version ```
-VirtualBox: ``` vboxmanage --version ```
+Vagrant: 
+
+``` vagrant --version ```
+
+VirtualBox: 
+
+``` vboxmanage --version ```
 
 - Used Versions durant the tests:
 
