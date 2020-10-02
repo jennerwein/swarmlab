@@ -73,7 +73,7 @@ Please open the installed tool **Visualizer** in a Browser of your choice: [http
 Element | Content
 ---------------- | -------------
 provision | The main used playbook and all roles (docker, docker-swarm, general, portainer, visualizer)
-config.yml | The default configuration of the Lab, to change the default configuration, please read the following link or the comments in config file
+config.yml | The default configuration of the Lab, to change the default configuration, please read the **Lab configuration** part or the comments in config file
 Vagrantfile | FIle used to build the virtual machines of the Lab
 
 ## Lab configuration
