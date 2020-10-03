@@ -1,5 +1,6 @@
 !.gitignore
 .vagrant/
+tokens/
 
 # ignore packaged files
 *.7z
