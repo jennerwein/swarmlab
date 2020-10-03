@@ -8,9 +8,5 @@
 
 - name: Install base packages
   apt:
-    name: ['locales', 'build-essential', 'acl', 'ntp', 'htop', 'git', 'supervisor', 'python-pip',
-    'python3-pip', 'nginx', 'python-netaddr']
-
-- name: Upgrade pip
-  pip: name=pip state=latest
+    name: ['python-pip', 'python3-pip', 'python-netaddr']
 

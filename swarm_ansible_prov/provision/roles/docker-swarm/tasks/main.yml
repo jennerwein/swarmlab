@@ -70,7 +70,7 @@
   when: >
         inventory_hostname == docker_swarm_primary_manager
 
-- name: docker_swarm | Register the swarm manager token
+- name: docker_swarm | Register the IP address of the Swarm Manager
   lineinfile:
     path: /ansible_prov/tokens/manager-address-token
     line: "{{ docker_swarm_addr }}:{{ docker_swarm_port }}"
