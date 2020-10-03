@@ -2,7 +2,7 @@
 #     Import variables from the configuration file
 ########################################################################
 configFile='./config.yml'
-# In Ruby we need this YAML module to serialize a Yaml string
+# In Ruby this module is needed to serialize a Yaml string
 require 'yaml'
 getVar = YAML.load_file(configFile) 
 
