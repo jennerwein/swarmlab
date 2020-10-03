@@ -62,7 +62,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ########################################################################
-  #   +++++++++++++++++++      Provisioning    +++++++++++++++++++++++++++
+  # ++++++  Configuration of the machines and Provisioning   +++++++++++++
   ########################################################################
   # Create synced file
   node.vm.synced_folder ".", "/ansible_prov"
