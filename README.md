@@ -1,4 +1,4 @@
-# swarmlab
+# swarmlab swarm_shell
 
 Swarmlab creates a virtual Docker Swarm environment on your computer (Windows, Ubuntu). The environment consists of three master nodes.
 
