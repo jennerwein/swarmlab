@@ -1,8 +1,11 @@
+########################################################################
+#     Import variables from the configuration file
+########################################################################
 configFile='./config.yml'
-# In Ruby we need this YAML module to serialize a Yaml string
+# In Ruby this module is needed to serialize a Yaml string
 require 'yaml'
 getVar = YAML.load_file(configFile) 
-
+# Variables
 NUMBER_OF_MANAGERS=getVar['NUMBER_OF_MANAGERS']
 NUMBER_OF_WORKERS=getVar['NUMBER_OF_WORKERS']
 MEMORY_MANAGER=getVar['MEMORY_MANAGER']
@@ -11,8 +14,37 @@ MEMORY_WORKER=getVar['MEMORY_WORKER']
 NUMBER_CPUS_WORKER=getVar['NUMBER_CPUS_WORKER']
 VAGRANTFILE_API_VERSION = getVar['VAGRANTFILE_API_VERSION']
 UPDATE_MACHINES = getVar['UPDATE_MACHINES']
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+########################################################################
+#                     Provisioning function
+########################################################################
+def provision(node, ipaddress, nodetype, hostname)
+  # Install Docker
+  node.vm.provision :shell, :path => "provision/install-docker.sh"
+  # Manager provisioning
+  if nodetype === "manager"
+    node.vm.provider "virtualbox" do |v|
+      # Memory
+      v.memory = MEMORY_MANAGER
+      # Number of CPU if (UPDATE_MACHINES)
+      v.cpus = NUMBER_CPUS_MANAGER
+    end
+    # Initialise swarm and add managers to the created swarm
+    node.vm.provision :shell, :path => "provision/manager.sh", :args => [ ipaddress, hostname ]
+  # Worker provisioning
+  elsif nodetype === "worker"
+    node.vm.provider "virtualbox" do |v|
+      # Memory
+      v.memory = MEMORY_WORKER
+      # Number of CPU if (UPDATE_MACHINES)
+      v.cpus = NUMBER_CPUS_WORKER
+    end  
+    # Add workers to the created swarm
+    node.vm.provision :shell, :path => "provision/worker.sh"
+  end  
+end
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = getVar['VM_BOX']
   # Enable/Disable search for updates
   config.vm.box_check_update = false
@@ -22,50 +54,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # https://www.vagrantup.com/docs/providers/virtualbox/configuration.html#linked-clones
     v.linked_clone = true if Gem::Version.new(Vagrant::VERSION) >= Gem::Version.new('1.8.0')
   end
-  # Create the managers (manager1, manager2, ...) and initialize swarm
+  
+  ########################################################################
+  #       Create the first manager, the principal Manager where Swarm 
+  #     will be initialized and add other managers: Manager 2, Manager 3 ...    
+  ########################################################################
   (1..NUMBER_OF_MANAGERS).each do |mgrNumber|
     _MANAGER_NAME = "manager#{mgrNumber}"
     config.vm.define _MANAGER_NAME do |node|
       # Define the hostname
       node.vm.hostname = _MANAGER_NAME
       node.vm.network "private_network", ip: "192.168.50.#{99+mgrNumber}"
-      node.vm.provider "virtualbox" do |v|
-        # Memory
-        v.memory = MEMORY_MANAGER
-        # Number of CPU
-        v.cpus = NUMBER_CPUS_MANAGER
-      end
-      if (UPDATE_MACHINES)
-        # Update
-        node.vm.provision "shell", inline: "sudo apt-get update && sudo apt-get autoremove"
-      end
-      # Install docker
-      node.vm.provision :shell, :path => "provision/install-docker.sh"
-      # Initialise Swarm
-      node.vm.provision :shell, :path => "provision/manager.sh", :args => [ "#{NUMBER_OF_MANAGERS}" , "192.168.50.#{99+mgrNumber}", "#{mgrNumber}" ]
+      provision(node, "192.168.50.#{99+mgrNumber}", "manager", _MANAGER_NAME)
     end
-  end  
-  # Create the workers (worker1, worker2, ...)
+  end 
+  ########################################################################
+  #  Create Worker machines: worker1, worker2, worker3 ...
+  ########################################################################
   (1..NUMBER_OF_WORKERS).each do |workerNumber|
     _WORKER_NAME = "worker#{workerNumber}"
     config.vm.define _WORKER_NAME do |node|
       # Define the hostname
       node.vm.hostname = _WORKER_NAME
       node.vm.network "private_network", ip: "192.168.50.#{149+workerNumber}"
-      node.vm.provider "virtualbox" do |v|
-        # Memory
-        v.memory = MEMORY_WORKER
-        # Number of CPU
-        v.cpus = NUMBER_CPUS_WORKER
-      end
-      if (UPDATE_MACHINES)
-        # Update
-        node.vm.provision "shell", inline: "sudo apt-get update && sudo apt-get autoremove"
-      end
-      # Install docker
-      node.vm.provision :shell, :path => "provision/install-docker.sh"
-      # Add worker to the swarm
-      node.vm.provision :shell, :path => "provision/worker.sh"
+      provision(node, "192.168.50.#{149+workerNumber}", "worker", _WORKER_NAME)
     end
   end
 end

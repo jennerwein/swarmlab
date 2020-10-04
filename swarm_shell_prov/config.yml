@@ -1,12 +1,10 @@
 ##     +++++      The default configuration for the created managers and workers     ++++++++    
 ## Used Vagrant Box
 VM_BOX: "ubuntu/bionic64"
-## Enable updates 
-UPDATE_MACHINES: true
 ## Number of managers
-NUMBER_OF_MANAGERS: 1
+NUMBER_OF_MANAGERS: 2
 ## Number of workers
-NUMBER_OF_WORKERS: 1
+NUMBER_OF_WORKERS: 0
 ## The memory used for a manager, please check the memory of your computer before 
 ## changing this value
 MEMORY_MANAGER: 768
