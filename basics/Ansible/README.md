@@ -1,12 +1,11 @@
 ##### Ansible
 
-Ansible is {+ Agentless +}, which means that no tool has to be installed on the client side.
+Ansible is **Agentless**, which means that no tool has to be installed on the client side.
 The requirements to use Ansible:
 
  -Python
 
-- **Inventory**: the machines that are managed with Ansible Playbooks, the standard storage location of the file is: {- /etc/ansible/hosts -}, this path can be in the configuration file
-** ansible.cfg ** modified.
+- **Inventory**: the machines that are managed with Ansible Playbooks, the standard storage location of the file is: **/etc/ansible/hosts**, this path can be in the configuration file ** ansible.cfg ** modified.
 
 ***How to create an inventory:***
 
@@ -18,9 +17,11 @@ The standard groups are: **all** and **ungrouped**
 ## Examples: 
 
 1. Without group: 
+
 ```192.168.56.101```
 
 2. Under a group: 
+
 ```
 [Hosts1]
 192.168.56.101
@@ -28,6 +29,7 @@ The standard groups are: **all** and **ungrouped**
 ```
 
 3. Rank hosts:
+
 ```
 [Hosts1]
 192.168.56.[101:150]
@@ -41,6 +43,7 @@ The standard groups are: **all** and **ungrouped**
       > ansible-playbook -i <name der Inventory>
 
 - **Module**: Ansible offers many modules that simplify automation.
+
 Examples:
 
 - Ping Module:
