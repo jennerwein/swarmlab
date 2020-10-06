@@ -143,3 +143,9 @@ Is the name of the currently automated machine
 3. **group_names:**
 
 The list of groups to which the machine belongs
+
+# Documentation
+
+More detailed Information about Ansible can be found in the following link:
+
+-[Ansible](https://docs.ansible.com/)

@@ -48,3 +48,9 @@ config.vm.provision: Host provisioning (with Ansible for example)
 ## Check the Vagrant syntax:
 
 ``` vagrant validate ```
+
+## Documentation
+
+More detailed Information about vagrant can be found in the following link:
+
+-[Vagrant](https://www.vagrantup.com/docs)

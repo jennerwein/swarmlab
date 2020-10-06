@@ -19,3 +19,9 @@ Initialise docker-swarm in the main manager:
 ### Add Worker to the Swarm:
 
 > docker swarm join --token <worker-token> <manager>:2377
+
+### Documentation
+
+More detailed Information about docker swarm can be found in the following link:
+
+-[Docker-swarm](https://docs.docker.com/engine/swarm/)
