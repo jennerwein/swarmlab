@@ -1,6 +1,6 @@
 # ++++++++++++++++++      Please do not change thoses variables unless you know what you are doing  ++++++++++++++++++
 ## We will use in this variables ipaddr filer: it's a Python Jinja2 filer used in this context to
 ## find, from a list of all IPv4 Addresses, the first valid IP Address
-docker_swarm_addr: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(MANAGER_WORKER_IPV4) | first}}"
+docker_swarm_addr: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | ipaddr(IP_NETWORK) | first}}"
 docker_swarm_primary_manager: "manager1"
 docker_swarm_port: "2377"

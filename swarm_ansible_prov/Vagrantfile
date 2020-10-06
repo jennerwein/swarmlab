@@ -10,8 +10,8 @@ NUMBER_OF_MANAGERS=getVar['NUMBER_OF_MANAGERS']
 NUMBER_OF_WORKERS=getVar['NUMBER_OF_WORKERS']
 MEMORY_MANAGER=getVar['MEMORY_MANAGER']
 NUMBER_CPUS_MANAGER=getVar['NUMBER_CPUS_MANAGER']
-MANAGER_WORKER_IPV4=getVar['MANAGER_WORKER_IPV4']
-BEGINN_MANAGER_WORKER_IPV4 = MANAGER_WORKER_IPV4.split('.')[0...-1].join('.')
+IP_NETWORK=getVar['IP_NETWORK']
+BEGINN_IP_NETWORK = IP_NETWORK.split('.')[0...-1].join('.')
 MEMORY_WORKER=getVar['MEMORY_WORKER']
 NUMBER_CPUS_WORKER=getVar['NUMBER_CPUS_WORKER']
 VAGRANTFILE_API_VERSION = getVar['VAGRANTFILE_API_VERSION']
@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "manager1" do |node|
     # Define the hostname
     node.vm.hostname = "manager1"
-    node.vm.network "private_network", ip: BEGINN_MANAGER_WORKER_IPV4 + "." + "100"
+    node.vm.network "private_network", ip: BEGINN_IP_NETWORK + "." + "100"
   end
 
   ########################################################################
@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define _MANAGER_NAME do |node|
       # Define the hostname
       node.vm.hostname = _MANAGER_NAME
-      node.vm.network "private_network", ip: BEGINN_MANAGER_WORKER_IPV4 + "." + "#{99+mgrNumber}"
+      node.vm.network "private_network", ip: BEGINN_IP_NETWORK + "." + "#{99+mgrNumber}"
     end
   end  
   # 
@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define _WORKER_NAME do |node|
       # Define the hostname
       node.vm.hostname = _WORKER_NAME
-      node.vm.network "private_network", ip: BEGINN_MANAGER_WORKER_IPV4 + "." + "#{149+workerNumber}"
+      node.vm.network "private_network", ip: BEGINN_IP_NETWORK + "." + "#{149+workerNumber}"
     end
   end
 

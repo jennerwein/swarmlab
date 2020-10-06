@@ -16,6 +16,6 @@ NUMBER_CPUS_MANAGER: 2
 ## Number of CPUs for workers
 NUMBER_CPUS_WORKER: 2
 ## The base IP-Address used for both manager and worker
-MANAGER_WORKER_IPV4: 192.168.60.0/24
+IP_NETWORK: 192.168.60.0/24
 ## Version of vagrant (default version is 2)
 VAGRANTFILE_API_VERSION: 2
