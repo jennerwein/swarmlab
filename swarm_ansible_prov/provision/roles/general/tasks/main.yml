@@ -7,6 +7,5 @@
 ## https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters_ipaddr.html#filtering-lists
 - name: Install base packages
   apt:
-     
-    name: ['python-netaddr']
+    name: ['python-apt', 'python-netaddr']
 

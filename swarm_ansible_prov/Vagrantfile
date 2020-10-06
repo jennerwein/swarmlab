@@ -74,11 +74,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   # Use Ansible to provision the Managers
   config.vm.provision "ansible_local" do |ansible|
+    
+    # If the compatibility is not defined, the following message will be printed:
+    # --------------Vagrant has automatically selected the compatibility mode '2.0'
+    # according to the Ansible version installed (2.9.14). Alternatively, the compatibility mode can be specified in your Vagrantfile:
+    # https://www.vagrantup.com/docs/provisioning/ansible_common.html#compatibility_mode -------------------------
+
     # Define Ansible version
     ansible.compatibility_mode = "2.0"
     ansible.provisioning_path = "/ansible_prov"
     ansible.playbook = "provision/main-playbook.yml"
-    # Use python 3
+    # We add this extra var to use python3
     ansible.extra_vars = { ansible_python_interpreter:"/usr/bin/python3" }
   end
 end

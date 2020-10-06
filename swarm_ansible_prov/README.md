@@ -105,6 +105,10 @@ Run please the following command to disable Hyper-V in Windows 10:
 
 ``` Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All ```
 
+- To avoid the the following warning, python-apt need to be installed (in general role) 
+
+``` [WARNING]: Updating cache and auto-installing missing dependency: python-apt ```
+
 # Documentation
 
 More detailed Information about the used technologies can be found in the following links:
