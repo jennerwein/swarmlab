@@ -1,6 +1,6 @@
 ---
 
-- name: Bau eines virtuellen Labors mit Docker-Swarm
+- name: ----------- Bau eines virtuellen Labors mit Docker-Swarm || Construction of own laboratory with Docker Swarm -----------
   hosts: all
   become: true
   gather_facts: yes

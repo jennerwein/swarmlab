@@ -1,12 +1,12 @@
 ---
-
-- name: Update cache
-  apt: update_cache=yes
-
-- name: Clean Cache
-  apt: autoremove=yes
-
+###############################################################
+#     The general needed libraries will be here installed
+###############################################################
+## python-netaddr: is a Python library used to manipulate network addresses. It's a Python Jinja2
+## that can be used as a filer for IPv4 and IPv6. To read more, visit the link below:
+## https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters_ipaddr.html#filtering-lists
 - name: Install base packages
   apt:
-    name: ['python-pip', 'python3-pip', 'python-netaddr']
+     
+    name: ['python-netaddr']
 
