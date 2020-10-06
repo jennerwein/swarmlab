@@ -5,7 +5,7 @@ Docker-Swarm ensures the permanent availability and scaling of the system.
 
 # Docker-Swarm basic commands:
 
-### Docker-swarm initialisieren:
+### Docker-swarm initialization:
 
 Initialise docker-swarm in the main manager:
 
