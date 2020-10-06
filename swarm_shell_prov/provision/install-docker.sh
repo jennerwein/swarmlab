@@ -4,8 +4,7 @@ sudo apt-get install -y \
 ## Install the packages allowing apt to use a repository over HTTPs
 # Enables the use of repositories that are accessed via the HTTP Secure protocol (HTTPS)
     apt-transport-https \
-    ca-certificates \
-# GNU privacy guard: allows you to encrypt and sign your data and communications
+# GNU privacy guard: allows you to import the repository public key
     gnupg-agent \
     curl \
 # Install software-properties-common because it incluce add-apt-repository

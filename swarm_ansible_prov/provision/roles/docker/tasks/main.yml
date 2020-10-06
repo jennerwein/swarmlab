@@ -1,13 +1,13 @@
 ---
-## Install the required packages to create a repository and install docker from it
+## Install the required packages to create a repository and install docker from it [ More can be fround 
+#   in the following link: https://docs.docker.com/engine/install/ubuntu/ ]
 #  - apt-transport-https: Enables the use of repositories that are accessed via the HTTP Secure protocol (HTTPS)
 #  - gnupg-agent: allows you to encrypt and sign your data and communications  
-#  - Install software-properties-common because it incluce add-apt-repository
-#  - 
+#  - Install software-properties-common because it incluce add-apt-repository 
 - name: Install required system packages
   apt: name={{ item }} state=latest update_cache=yes
-  loop: [ 'apt-transport-https', 'ca-certificates', 'gnupg-agent', 'curl', 'software-properties-common']
-# Get Docker official GPG key and add package key
+  loop: [ 'apt-transport-https', 'gnupg-agent', 'curl', 'software-properties-common']
+# Import the repository public key
 - name: Add Docker GPG apt Key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
