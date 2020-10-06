@@ -1,4 +1,4 @@
-##### Ansible
+## Ansible
 
 Ansible is **Agentless**, which means that no tool has to be installed on the client side.
 The requirements to use Ansible:
@@ -14,7 +14,7 @@ The standard groups are: **all** and **ungrouped**
 **all**: contains all hosts
 **ungrouped**: All other hosts that have no group
 
-## Examples: 
+### Examples: 
 
 1. Without group: 
 
@@ -60,31 +60,31 @@ With fetch Module we can transfer files from a remote host to local host:
     dest: fetched
 ```
 
-### Important commands:
+## Important commands:
 
-## To get the list of all modules, please execute the following command:
+#### To get the list of all modules, please execute the following command:
 	
   > ansible-doc -l
 
-## Examples using those commands are also available:
+#### Examples using those commands are also available:
 	
   > ansible-doc command
 
-## Example of pinging all hosts in the inventory. Ping Module is actually not a simple ping but an SSH connection:
+#### Example of pinging all hosts in the inventory. Ping Module is actually not a simple ping but an SSH connection:
 
   > ansible -i inventory_beispiel.ini all -m ping
 
-## Checking the correctness of the syntax before running the playbooks:
+#### Checking the correctness of the syntax before running the playbooks:
 
   > ansile-playbook FileName.yml --syntax-check
 
-## List all hosts: 
+#### List all hosts: 
 
   > ansible --list-host all
 
-## Important remarks:
+# Important remarks:
 
-# Facts Gather: 
+## Facts Gather: 
 
 Facts Gather provides information about remote machines, such as the IP address, the name of the machine or the operating system that is installed on it.
 To list all the facts:
@@ -99,7 +99,7 @@ There is a lot of information in facts. The ** setup ** module supports filter w
 
 ``` ansible <Gruppe oder Host> -m setup -a 'filter=<Name ein Fact Object>' ```
 
-### Variables:
+## Variables:
 
 Three types of variables:
   - Playbook Variables
@@ -112,7 +112,7 @@ Die Variablen in Playbook zu definieren, ist die einfache und nicht empfehlenswe
 
 Defining the variables in playbook is the easy way but not recommended method. the variables are listed under ** vars ** Section.
 
-# Example: 
+### Example: 
 
 ```
 vars:
@@ -132,7 +132,7 @@ Information über anderer Maschinen innerhalb der Playbook werdne oft gebraucht,
 
 Information about remote machines in playbooks are often needed, e.g. the IP address. Such information is available as fact and can be accessed.
 
-# Example:
+**Example:**
 
    ``` {{ hostvars[<Name des Hosts>].ansible_eth1.ipv4.address }} ```
 
