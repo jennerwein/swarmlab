@@ -8,12 +8,10 @@ getVar = YAML.load_file(configFile)
 
 NUMBER_OF_MANAGERS=getVar['NUMBER_OF_MANAGERS']
 NUMBER_OF_WORKERS=getVar['NUMBER_OF_WORKERS']
-MEMORY_MANAGER=getVar['MEMORY_MANAGER']
-NUMBER_CPUS_MANAGER=getVar['NUMBER_CPUS_MANAGER']
+MEMORY=getVar['MEMORY']
+NUMBER_CPUS=getVar['NUMBER_CPUS']
 IP_NETWORK=getVar['IP_NETWORK']
 BEGINN_IP_NETWORK = IP_NETWORK.split('.')[0...-1].join('.')
-MEMORY_WORKER=getVar['MEMORY_WORKER']
-NUMBER_CPUS_WORKER=getVar['NUMBER_CPUS_WORKER']
 VAGRANTFILE_API_VERSION = getVar['VAGRANTFILE_API_VERSION']
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -28,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   
   ########################################################################
-  #     Create the first manager, the principal Manager where Swarm 
+  #     Create the first manager, the main Manager where Swarm 
   #     will be initialized  
   ########################################################################
   config.vm.define "manager1" do |node|
@@ -68,9 +66,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/ansible_prov"
   config.vm.provider "virtualbox" do |v|
     # Memory
-    v.memory = MEMORY_MANAGER
+    v.memory = MEMORY
     # Number of CPU
-    v.cpus = NUMBER_CPUS_MANAGER
+    v.cpus = NUMBER_CPUS
   end
   # Use Ansible to provision the Managers
   config.vm.provision "ansible_local" do |ansible|

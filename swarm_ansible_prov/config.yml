@@ -5,16 +5,11 @@ VM_BOX: "ubuntu/bionic64"
 NUMBER_OF_MANAGERS: 2
 ## Number of workers
 NUMBER_OF_WORKERS: 0
-## The memory used for a manager, please check the memory of your computer before 
+## The memory used for a manager/worker, please check the memory of your computer before 
 ## changing this value
-MEMORY_MANAGER: 768
-## The memory used for a worker, please check the memory of your computer before 
-## changing this value
-MEMORY_WORKER: 512
-## Number of CPUs for managers
-NUMBER_CPUS_MANAGER: 2
-## Number of CPUs for workers
-NUMBER_CPUS_WORKER: 2
+MEMORY: 768
+## Number of CPUs
+NUMBER_CPUS: 2
 ## The base IP-Address used for both manager and worker
 IP_NETWORK: 192.168.60.0/24
 ## Version of vagrant (default version is 2)
