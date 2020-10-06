@@ -112,7 +112,7 @@ Die Variablen in Playbook zu definieren, ist die einfache und nicht empfehlenswe
 
 Defining the variables in playbook is the easy way but not recommended method. the variables are listed under ** vars ** Section.
 
-### Example: 
+**Example:**
 
 ```
 vars:
