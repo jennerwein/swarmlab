@@ -1,14 +1,14 @@
-# Check if the directory exist 
-echo $*
+##### Check if its the main manager (the second arguments) 
 if [ $2 = "manager1" ]; then
 echo Initialize Swarm
+  # Delete the swarm token file
   if [ -d "/vagrant/.vagrant/swarm-token" ] ; then
     echo Delete the existing file
     rm -rf "/vagrant/.vagrant/swarm-token"
   fi
   # Create swarm-token file 
   mkdir /vagrant/.vagrant/swarm-token
-  # Change w
+  # Give the read and write privileges 
   chmod 777 /vagrant/.vagrant/swarm-token
   # Get the ip-address from the passed arguments
   swarm_manager_ip=$1
@@ -20,9 +20,8 @@ echo Initialize Swarm
   docker swarm join-token -q manager > /vagrant/.vagrant/swarm-token/manager
   # Capture worker token and write it in worker file
   docker swarm join-token -q worker > /vagrant/.vagrant/swarm-token/worker
+##### If its not the main manager
 else
-# When the swarm-token file already exist, that mean that we need to add this machine (manager)
-# to the swarm
 echo Add other Managers to the swarm
   docker swarm join \
     --token `cat /vagrant/.vagrant/swarm-token/manager` \
