@@ -128,8 +128,6 @@ A variable is accessible using Jinja template: {+ "{{variable}}" +}
 
 1. **hostvars:**
 
-Information über anderer Maschinen innerhalb der Playbook werdne oft gebraucht, z.B die IP-Addresse eines Servers. Solche Informationen sind als Facts verfügbar und man kann anhand die Name der Host die zugreiffen.
-
 Information about remote machines in playbooks are often needed, e.g. the IP address. Such information is available as fact and can be accessed.
 
 **Example:**
