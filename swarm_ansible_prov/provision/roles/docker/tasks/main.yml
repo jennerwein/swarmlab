@@ -1,24 +1,31 @@
 ---
- 
+## Install the required packages to create a repository and install docker from it
+#  - apt-transport-https: Enables the use of repositories that are accessed via the HTTP Secure protocol (HTTPS)
+#  - gnupg-agent: allows you to encrypt and sign your data and communications  
+#  - Install software-properties-common because it incluce add-apt-repository
+#  - 
 - name: Install required system packages
   apt: name={{ item }} state=latest update_cache=yes
-  loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
-
+  loop: [ 'apt-transport-https', 'ca-certificates', 'gnupg-agent', 'curl', 'software-properties-common']
+# Get Docker official GPG key and add package key
 - name: Add Docker GPG apt Key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
- 
+## Add new repository with apt-repository:
+# 1. deb: type of the archive
+# 2. https://download.docker.com/linux/ubuntu: repository URL
+# 4. bionic: Ubuntu codename
 - name: Add Docker Repository
   apt_repository:
     repo: deb https://download.docker.com/linux/ubuntu bionic stable
     state: present
- 
+# Install the latest version of Docker Engine
 - name: Update apt and install docker-ce
   apt: update_cache=yes name=docker-ce state=latest
-
+# Add docker group if not exists
 - name: Create a Docker group
   group: name=docker state=present
-
+# Add vagrant to docker group (so we can directly execute docker commands without sudo)
 - name: Add the vagrant user to Docker group
   user: name=vagrant groups=docker append=yes
