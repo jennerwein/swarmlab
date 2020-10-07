@@ -16,7 +16,7 @@
 - name: Init Docker Swarm Mode On the main Manager
   command: >
           docker swarm init
-          --listen-addr {{ docker_swarm_addr }}:{{ docker_swarm_port }}
+          --listen-addr {{ docker_swarm_addr }}:2377
           --advertise-addr {{ docker_swarm_addr }}
   when: >
         'Swarm: inactive' in docker_info.stdout and
@@ -85,7 +85,7 @@
 - name: Register the IP address of the main Manager
   lineinfile:
     path: /ansible_prov/tokens/manager-address-token
-    line: "{{ docker_swarm_addr }}:{{ docker_swarm_port }}"
+    line: "{{ docker_swarm_addr }}:2377"
     create: yes
   when: >
         inventory_hostname == docker_swarm_primary_manager
