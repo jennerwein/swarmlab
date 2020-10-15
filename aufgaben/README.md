@@ -2,8 +2,6 @@
 
 In this project, we build a simple Nodejs application, wich shows the IP-Address of the local machine.
 
-Three Load-Balancing algorithms will be here presented: **Round-Robin-weighted Round-Robin-Least Connections**
-
 # Architecture
 
 ## whoami:
@@ -15,6 +13,24 @@ template | the generated template (with ejs template generator)
 app.js | Node js main file to show the hostname and IP-Address
 Dockerfile | used to build the image
 push-whoami.sh | script used to build the image and push it to the Docker-Hub
+
+
+## load-balancer:
+
+Three Load-Balancing algorithms will be here presented: **Round-Robin-weighted Round-Robin-Least Connections**
+
+Module | Explanation
+---------------- | ----------------
+round-robin | - Dockerfile: to build the load-balancer Image
+              - push-loadbalancer.sh: script used to build and push the Image to Docker-Hub
+              - nginx.conf: define the load-balancer algorithm 
+weighted-round-robin | - Dockerfile: to build the load-balancer Image
+              - push-loadbalancer.sh: script used to build and push the Image to Docker-Hub
+              - nginx.conf: define the load-balancer algorithm 
+least-connections | - Dockerfile: to build the load-balancer Image
+              - push-loadbalancer.sh: script used to build and push the Image to Docker-Hub
+              - nginx.conf: define the load-balancer algorithm 
+docker-compose.yml | Start three whoami services and the load-balancer
 
 # Load Balancing Basics with NGinx
 
