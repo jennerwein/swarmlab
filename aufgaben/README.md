@@ -21,16 +21,9 @@ Three Load-Balancing algorithms will be here presented: **Round-Robin-weighted R
 
 Module | Explanation
 ---------------- | ----------------
-round-robin | - Dockerfile: to build the load-balancer Image
-              - push-loadbalancer.sh: script used to build and push the Image to Docker-Hub
-              - nginx.conf: define the load-balancer algorithm 
-weighted-round-robin | - Dockerfile: to build the load-balancer Image
-              - push-loadbalancer.sh: script used to build and push the Image to Docker-Hub
-              - nginx.conf: define the load-balancer algorithm 
-least-connections | - Dockerfile: to build the load-balancer Image
-              - push-loadbalancer.sh: script used to build and push the Image to Docker-Hub
-              - nginx.conf: define the load-balancer algorithm 
-docker-compose.yml | Start three whoami services and the load-balancer
+Dockerfile | to build the load-balancer Image
+push-loadbalancer.sh | script used to build and push the Image to Docker-Hub
+nginx.conf | define the load-balancer algorithm
 
 # Load Balancing Basics with NGinx
 
