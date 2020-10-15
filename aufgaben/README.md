@@ -9,7 +9,7 @@ Three Load-Balancing algorithms will be here presented: **Round-Robin-weighted R
 ## whoami:
 
 Module | Explanation
----------------- | ------------- | ----------------
+---------------- | -------------
 template | the generated template (with ejs template generator)
 .dockerignore | those files will be ignored durant Image building
 app.js | Node js main file to show the hostname and IP-Address
