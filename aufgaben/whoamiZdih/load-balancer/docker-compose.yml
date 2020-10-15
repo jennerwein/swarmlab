@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    whoami_first_color:
+        image: zdih/whoami
+        ports:
+          - 8011:8010
+
+    whoami_second_color:
+        image: zdih/whoami
+        ports:
+          - 8012:8010
+
+    whoami_third_color:
+        image: zdih/whoami
+        ports:
+          - 8013:8010
+    loadbalancer:
+        image: zdih/loadbalancer1
+        ports:
+          - 8014:80
