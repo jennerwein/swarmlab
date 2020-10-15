@@ -9,7 +9,7 @@ let ip = require('ip');
 let hostName = os.hostname();
 // Get the IP-Address from "os" module
 let hostIp = ip.address();
-
+// The color will be based on the hostname defined  
 let color = hostName.substr(0, 5);
 // Send the IP, Hostname and Color to the template generator ejs
 app.get('/', (req, res) => {res.render("index", { hostName: hostName, hostIp: hostIp, color: color }); });
