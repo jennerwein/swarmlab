@@ -1,6 +1,6 @@
 DOCKERHUB_NAME=zdih
 TAG=latest
-NAME=loadbalancer1
+NAME=weighted-round-robin
 
 docker login
 

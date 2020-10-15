@@ -16,6 +16,6 @@ services:
         ports:
           - 8013:8010
     loadbalancer:
-        image: zdih/loadbalancer1
+        image: zdih/roundrobin
         ports:
           - 8014:80

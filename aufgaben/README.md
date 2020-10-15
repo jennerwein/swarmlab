@@ -2,6 +2,20 @@
 
 In this project, we build a simple Nodejs application, wich shows the IP-Address of the local machine.
 
+1- Build and push the whoami application:
+Go please to the Folder where your whoami application is, and start the script push-whoami.sh
+
+``` ./push-whoami.sh ```
+
+2- Build and push the load-balancer Image:
+Go please to the Folder where your load-balancing algorithm defined is (round-robin for example), and start the script push-loadbalancer.sh
+
+``` ./push-loadbalancer.sh ```
+
+3- Go please to the Folder where your docker-compose file is, and start it:
+
+``` docker-compose up ```
+
 # Architecture
 
 ## whoami:
@@ -17,13 +31,14 @@ push-whoami.sh | script used to build the image and push it to the Docker-Hub
 
 ## load-balancer:
 
-Three Load-Balancing algorithms will be here presented: **Round-Robin-weighted Round-Robin-Least Connections**
+Three Load-Balancing algorithms will be here presented: **Round-Robin** - **weighted Round-Robin** - **Least Connections**
 
 Module | Explanation
 ---------------- | ----------------
 Dockerfile | to build the load-balancer Image
 push-loadbalancer.sh | script used to build and push the Image to Docker-Hub
 nginx.conf | define the load-balancer algorithm
+docker-compose | start three services of whoami application
 
 # Load Balancing Basics with NGinx
 

@@ -1,6 +1,6 @@
 DOCKERHUB_NAME=zdih
 TAG=latest
-NAME=loadbalancer1
+NAME=roundrobin
 
 docker login
 
