@@ -1,6 +1,6 @@
 # Getting started:
 
-In this project, we build a simple Nodejs application, wich shows the IP-Address of the local machine.
+In this project, we build a simple Nodejs application, wich shows the local IP-Address.
 
 1- Build and push the whoami application:
 Go please to the Folder where your whoami application is, and start the script push-whoami.sh
@@ -76,7 +76,7 @@ When for example one of the servers has small capacity, the load-balancer with R
 
 With this method, we can assign more requests to the server with better capability of treating more requests.
 
-In this example, **weight** means that in 6 requests, 5 of them will be transfert to the **server backend1.example.com**
+In this example, **weight** means that in 6 requests, 5 of them will be transfered to the **server backend1.example.com**
 
 ```javascript
 http {
@@ -90,7 +90,7 @@ http {
 
 > **Least Connections:**
 
-Even if the servers have the same specs, it could be that one server will rapidly overloaded because the for example the connected clients in this server stay for much more time connected.
+Even if the servers have the same specs, it could be that one server will rapidly overloaded because for example the connected clients in this server stay for much more time connected.
 
 With least-connections algorithm, connections will be sent to the server with least number of active connections
 
