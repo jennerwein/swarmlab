@@ -6,13 +6,15 @@ Three Load-Balancing algorithms will be here presented: **Round-Robin-weighted R
 
 # Architecture
 
-Module | meaning | Default value
+## whoami:
+
+Module | Explanation
 ---------------- | ------------- | ----------------
-whoami | template | the generated template (with ejs template generator)
-       | .dockerignore | those files will be ignored durant Image building
-       | app.js | Node js main file to show the hostname and IP-Address
-       | Dockerfile | used to build the image
-       | push-whoami.sh | script used to build the image and push it to the Docker-Hub 
+template | the generated template (with ejs template generator)
+.dockerignore | those files will be ignored durant Image building
+app.js | Node js main file to show the hostname and IP-Address
+Dockerfile | used to build the image
+push-whoami.sh | script used to build the image and push it to the Docker-Hub
 
 
 
