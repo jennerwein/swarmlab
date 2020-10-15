@@ -1,6 +1,7 @@
 !.gitignore
 .vagrant/
 tokens/
+node_modules/
 
 # ignore packaged files
 *.7z
