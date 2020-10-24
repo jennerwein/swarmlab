@@ -16,7 +16,7 @@ This method is used by default (if no Load-Balancing algorithm is specified, Rou
 
 [See the documentation to discover other algorithms](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
 
-Create a load balancing scenario (based on the algorithms mentioned or other from the official documentation), create a **[Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)** to create an image of this scenario and push it to your **[Dockerhub] (https://hub.docker.com/)**
+Create a load balancing scenario (based on the algorithms mentioned or other from the official documentation), create a **[Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)** to create an image of this scenario and push it to your **[Dockerhub](https://hub.docker.com/)**
 
 ## Exercise 2
 
