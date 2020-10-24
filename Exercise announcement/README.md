@@ -1,13 +1,10 @@
 # Lab 6
 
-USE VARIABLES
-
 Without a tool like Vagrant, building a Cluster will take lot of time and is sometimes painful
 In this exercice you will build a complete Environment with Docker-Swarm and try to install some useful applications on the cluster
 
 In GitHub Repository you can find under Basics, a getting started for each technologie with some basic examples and the most used Commands:
 [Link to Basics](https://github.com/jennerwein/swarmlab/tree/master/basics)
- 
 
 To get an idea about the logic used to write the shell scripts or the playbooks and roles used in this project, feel free to check the project repository: 
 [Project repository](https://github.com/jennerwein/swarmlab)
@@ -36,8 +33,7 @@ You installed the machines, perfect, we need now to provision those machines
 Shell-Scripts | Ansible Playbooks
 ------------ | -------------
 Try to install docker using shell scripts, to get started you can of course see our GitHub Repository. [Project Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov) or the examples in the official documentation 
-[Vagrant provisioning with Shell] (https://www.vagrantup.com/docs/provisioning/shell) | Content from cell 2
-Content in the first column | You learned durant the Lab-2 the basics of Ansible, you can find some basics under [SwarmLab Repository](https://github.com/jennerwein/swarmlab/tree/master/basics) or in the [official Documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html).
+[Vagrant provisioning with Shell](https://www.vagrantup.com/docs/provisioning/shell) | You learned durant the Lab-2 the basics of Ansible, you can find some basics under [SwarmLab Repository](https://github.com/jennerwein/swarmlab/tree/master/basics) or in the [official Documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html).
 [Hint]: Because Ansible can only manage Windows hosts, please use "ansible_local" for the provisioning, which require no installation of Ansible in the target host
  
 ## Exercice 2: [Key words: Docker-swarm, Workers, Managers ...]
