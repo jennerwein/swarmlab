@@ -22,6 +22,6 @@ Create a load balancing scenario (based on the algorithms mentioned or other fro
 
 The objective of this exercise is to show the effect of load balancing on the Whoami application.
 
-You have two images ready, one is the Whoami app, the other is your pushed load balancers, try to write a **[Docker-compose](https://docs.docker.com/compose/ gettingstarted/)** in order to load the Whoami application with a new background color each time.
+You have two images ready, one is the Whoami app, the other is your pushed load balancers, try to write a **[Docker-compose](https://docs.docker.com/compose/gettingstarted/)** in order to load the Whoami application with a new background color each time.
 
 **[Hint]: try calling the Whoami app, each time with a new port number and look for a solution to get a new color code on each call (use the hostname for example)**
