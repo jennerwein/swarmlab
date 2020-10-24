@@ -46,7 +46,7 @@ be added as Workers or Managers), to see the basic commands, please consult the[
 
 Shell-Scripts | Ansible Playbooks
 ------------ | -------------
-To get an idea about the scripts, please check the [GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov/provision): - Create a script to initialise Docker-Swarm in your Manager - Create a script to add the other Host as second Manager or Worker (is you choice) | a) Try to write a Playbook to initialise Docker-Swarm in your choosed main manager b) Try to add the other hosts to your 
+To get an idea about the scripts, please check the [GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov/provision): A) Create a script to initialise Docker-Swarm in your Manager <br> B) Create a script to add the other Host as second Manager or Worker (is you choice) | a) Try to write a Playbook to initialise Docker-Swarm in your choosed main manager b) Try to add the other hosts to your 
  
 
   [Hint]: the task to initialise Docker-Swar and add Workers/Managers to it could be little bit complexe, to get an idea about it, i invite you to read the Playbooks/Roles in GitHub and try to anderstand the logic behind it. 
