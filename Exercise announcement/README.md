@@ -16,7 +16,7 @@ The Goals of the Lab:
 - [x] Discover Docker-Swarm and initialise it on the Cluster 
 - [x] Install Portainer
 
-## Exercice 1: [Key words: Vagrantfile, Vagrantfile provisioning, Vagrantfile loops, Ansible Playbooks...]
+## Exercice 1: _[Key words: Vagrantfile, Vagrantfile provisioning, Vagrantfile loops, Ansible Playbooks...]_
 
 Try to start two machines with vagrant (to remind some integrity errors, it is recommended to use the used Boxe in the project: **"ubuntu/bionic64"**)
 
@@ -38,19 +38,15 @@ Try to install docker using shell scripts, to get started you can of course see 
  
 ## Exercice 2: _[Key words: Docker-swarm, Workers, Managers ...]_
 
-We will modify the Vagrantfile from **Exercice1** and start **Docker-Swarm** the **Manager**.
-In Docker-swarm **Cluster** we have two kinds of hosts: **Workers** and **Managers**. We will choose a Manager and initialise Docker-swarm there.
+We will modify the Vagrantfile from **Exercice1** and initialise **Docker-Swarm** on the **Manager**.
+The is two types in the Docker-swarm Jargon: **Workers** and **Managers**. We will choose a Manager and initialise Docker-swarm there.
 The **Manager** will control the other hosts added to the Swarm (they could 
 be added as Workers or Managers), to see the basic commands, please consult the[Basics in GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/basics)
 
 
 Shell-Scripts | Ansible Playbooks
 ------------ | -------------
-To get an idea about the scripts, please check the [GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov/provision): 
-			a) Create a script to initialise Docker-Swarm in your Manager 
-			b) Create a script to add the other Host as second Manager or Worker (is you choice) | Content from cell 2
-Content in the first column | a) Try to write a Playbook to initialise Docker-Swarm in your choosed main manager
-			b) Try to add the other hosts to your 
+To get an idea about the scripts, please check the [GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov/provision): - Create a script to initialise Docker-Swarm in your Manager - Create a script to add the other Host as second Manager or Worker (is you choice) | a) Try to write a Playbook to initialise Docker-Swarm in your choosed main manager b) Try to add the other hosts to your 
  
 
   [Hint]: the task to initialise Docker-Swar and add Workers/Managers to it could be little bit complexe, to get an idea about it, i invite you to read the Playbooks/Roles in GitHub and try to anderstand the logic behind it. 
