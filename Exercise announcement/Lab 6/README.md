@@ -49,7 +49,7 @@ To get an idea about the scripts, please consult the [GitHub Repository](https:/
 
  ## Exercise 3: _[Keywords: Portainer]_
 
-Your Lab is now started, you have created a Cluster and installed Docker on it and initialized Docker-Swarm, the three main objectives have already been achieved.
+Your Lab is now started, you have created a cluster, installed Docker on it and initialized Docker-Swarm, the three main objectives have already been achieved.
 We will try now to install **Portainer** in the Cluster.
 
 _**Whats is Portainer**_: Is an Open-Source tool used to facilitate the management of containers: [Official Portainer Documentation](https://documentation.portainer.io/#about-portainer)
