@@ -56,4 +56,4 @@ _**Whats is Portainer**_: Is an Open-Source tool used to facilitate the manageme
 
 Shell-Scripts | Ansible Playbooks
 ------------ | -------------
-Write a script that installs Portainer and use it in the Vagrantfile provisioning loop. Open Portainer in the browser to verify the installation | Write a playbook to install Portainer in one of Cluster hosts, call Portainer in your browser to verify the Installation.
+Write a script that installs Portainer and use it in the Vagrantfile provisioning loop. Open Portainer in the browser to verify the installation | Write a playbook to install Portainer in one of cluster hosts, call Portainer in your browser to verify the installation.
