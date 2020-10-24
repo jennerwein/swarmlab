@@ -27,16 +27,16 @@ You installed the machines, perfect, we need now to provision those machines
 
 2. Try to install Docker in the created machines. 
 
-[Hint]: To Install Docker in each host of the Cluster, there is two scenarios that  will be descuss durant the presentation of the Lab. **"Shell scripts"** and **"Ansible Playbooks"** could be used to provision a Cluster, try the scenarios and find the difference and limits between the two methods at the end of the Lab.
+**[Hint]: To Install Docker in each host of the Cluster, there is two scenarios that  will be descuss durant the presentation of the Lab. **"Shell scripts"** and **"Ansible Playbooks"** could be used to provision a Cluster, try the scenarios and find the difference and limits between the two methods at the end of the Lab.**
 
 
 Shell-Scripts | Ansible Playbooks
 ------------ | -------------
-Try to install docker using shell scripts, to get started you can of course see our GitHub Repository. [Project Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov) or the examples in the official documentation [Vagrant provisioning with Shell](https://www.vagrantup.com/docs/provisioning/shell) | You learned durant the Lab-2 the basics of Ansible, you can find some basics under [SwarmLab Repository](https://github.com/jennerwein/swarmlab/tree/master/basics) or in the [official Documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html).
+Try to install docker using shell scripts, to get started you can of course see our GitHub Repository. [Project Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov) or the examples in the official documentation [Vagrant provisioning with Shell](https://www.vagrantup.com/docs/provisioning/shell) | You learned durant the Lab-2 the basics of Ansible, you can find some basics under [SwarmLab Repository](https://github.com/jennerwein/swarmlab/tree/master/basics) or in the [official Documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html). Try to create a Paybook to install Docker on your Hosts
 
 **[Hint]: Because Ansible can only manage Windows hosts, please use "ansible_local" for the provisioning, which require no installation of Ansible in the target host**
  
-## Exercice 2: [Key words: Docker-swarm, Workers, Managers ...]
+## Exercice 2: _[Key words: Docker-swarm, Workers, Managers ...]_
 
 We will modify the Vagrantfile from **Exercice1** and start **Docker-Swarm** the **Manager**.
 In Docker-swarm **Cluster** we have two kinds of hosts: **Workers** and **Managers**. We will choose a Manager and initialise Docker-swarm there.
