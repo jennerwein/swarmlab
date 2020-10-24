@@ -46,25 +46,17 @@ be added as Workers or Managers), to see the basic commands, please consult the[
 
 Shell-Scripts | Ansible Playbooks
 ------------ | -------------
-To get an idea about the scripts, please check the [GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov/provision): A) Create a script to initialise Docker-Swarm in your Manager <br> B) Create a script to add the other Host as second Manager or Worker (is you choice) | a) Try to write a Playbook to initialise Docker-Swarm in your choosed main manager b) Try to add the other hosts to your 
+To get an idea about the scripts, please check the [GitHub Repository](https://github.com/jennerwein/swarmlab/tree/master/swarm_shell_prov/provision): A) Create a script to initialise Docker-Swarm in your Manager <br> B) Create a script to add the other Host as second Manager or Worker (is you choice) | A) Try to write a Playbook to initialise Docker-Swarm in your choosed main manager <br> B) Try to add the other hosts to your 
  
+**[Hint]: Create a Playbook to initialise Docker-Swarm and add Workers/Managers to it could be little bit complexe, to get an idea about it, I recommend you to read the [Playbooks/Roles](https://github.com/jennerwein/swarmlab/tree/master/swarm_ansible_prov/provision) in GitHub and try to anderstand the logic behind it. There is of course no ideal solution for a problem, you can make your own logic and discuss it in the Lab.**
 
-  [Hint]: the task to initialise Docker-Swar and add Workers/Managers to it could be little bit complexe, to get an idea about it, i invite you to read the Playbooks/Roles in GitHub and try to anderstand the logic behind it. 
-There is of course no ideal solution for a problem, you can make your own logic and discuss it in the Lab.
+ ## Exercice 3: _[Key words: Portainer]_
 
+Your Lab is now started, you have created a Cluster and installed Docker on it and initialised Docker-Swarm, the three main goals are already done.
+We will try now to install **Portainer** in the Cluster.
 
+_**Whats is Portainer**_: Is an Open-Source Tool used to facilate the management of the containers: [Official Portainer Documentation](https://documentation.portainer.io/#about-portainer)
 
-
-Exercice3:   
-
-Your Lab is now started, you created a Cluster and installed Docker on it and initialised Docker-Swarm, we will try now to install Portainer in the Cluster.
-
-Whats is Portainer: Is an Open-Source Tool used to facilate the management of the containers: https://documentation.portainer.io/#about-portainer
-
-1) Install Portainer with Shell-Scripts:
-
-Write a script that install Portainer and use it in the Provisioning Loop in Vagrantfile. Open Portainer in the Browser to check the Installation 
-
-2) Install Portainer with Ansible:
-
-Write a playbook to install Portainer in one of your Cluster Hosts, call Portainer in your Browser to check the Installation.
+Shell-Scripts | Ansible Playbooks
+------------ | -------------
+Write a script that install Portainer and use it in the Provisioning Loop in Vagrantfile. Open Portainer in the Browser to check the Installation | Write a playbook to install Portainer in one of your Cluster Hosts, call Portainer in your Browser to check the Installation.
