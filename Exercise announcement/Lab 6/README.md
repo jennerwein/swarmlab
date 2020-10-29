@@ -1,4 +1,4 @@
-# Lab 6
+# Practice sheet 6
 
 Without a tool like Vagrant, building a Cluster will take a long time and is sometimes complex. <br>
 In this exercise you will build a complete environment with **Docker-Swarm** and try to install useful applications on the cluster
