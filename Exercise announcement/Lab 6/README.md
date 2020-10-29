@@ -16,7 +16,7 @@ The objectives of the Lab:
 - [x] Discover Docker-Swarm and initialise it 
 - [x] Install Portainer
 
-## Exercise 1: _[Keywords: Vagrantfile, Vagrantfile provisioning, Vagrantfile loops, Ansible Playbooks...]_
+## Exercise 1: <sub>_[Keywords: Vagrantfile, Vagrantfile provisioning, Vagrantfile loops, Ansible Playbooks...]_</sub>
 
 _To remind certain integrity errors, it is recommended to use the used Box in the project: **"ubuntu/bionic64"**)_
 
